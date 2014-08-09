@@ -1,0 +1,30 @@
+.title_center {
+  padding: 10px 0px;
+  text-align: center;
+  height: 800px;
+}
+
+ul.mdList {
+  margin: 30px auto;	
+}
+
+ul.mdList > li {
+  list-style: none;
+  font-size: 20px;
+}
+
+ul.mdList > li:before {
+  content: "\e022";
+  font-family: 'Glyphicons Halflings';
+  font-size: 20px;
+}
+
+
+.mdContent {
+  padding: 20px 10px;
+  border-left: 1px dotted #333;
+}
+
+.itemHighlight {
+  color: blue;
+}
