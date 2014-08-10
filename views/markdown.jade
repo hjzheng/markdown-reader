@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      div(class="col-lg-3 col-md-3 col-sm-4 col-xs-5")
+        ul.mdList
+          each mdFile in mdFiles
+            if fileName == mdFile
+              li.itemHighlight
+                a(href=mdFile)= mdFile
+            else 
+              li
+                a(href=mdFile)= mdFile
+      div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent")
+       != mdContent

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('myapp');
+var debug = require('debug')('markdown-reader');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 9000);
