@@ -35,6 +35,7 @@ ul.mdList > li:before {
   left: 0px;
   top: 200px;
   opacity: 0.3;
+  z-index: 3;
 }
 
 #shrinkButton:hover {
@@ -42,4 +43,5 @@ ul.mdList > li:before {
   left: 0px;
   top: 200px;
   opacity: 0.9;
+  z-index: 3;
 }
