@@ -17,5 +17,7 @@ block content
               li
                 a(href='/markdown/#{mdFile}')= mdFile
       div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent")
-       != mdContent
+        button#shrinkButton(type="button" class="btn btn-default")
+          span(class="glyphicon glyphicon-chevron-left") 
+        != mdContent
   script(src="/javascripts/upload.js")
