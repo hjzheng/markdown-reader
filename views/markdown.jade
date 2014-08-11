@@ -1,16 +1,21 @@
 extends layout
 
 block content
-  .container-fluid
+  #messageZone(class="alert alert-warning alert-dismissible", role="alert")
+    button(type="button", class="close", data-dismiss="alert")
+      span(aria-hidden="true") &times;
+      span(class="sr-only") Close
+  #uploadZone(class="container-fluid")
     .row
       div(class="col-lg-3 col-md-3 col-sm-4 col-xs-5")
         ul.mdList
           each mdFile in mdFiles
             if fileName == mdFile
               li.itemHighlight
-                a(href=mdFile)= mdFile
+                a(href='/markdown/#{mdFile}')= mdFile
             else 
               li
-                a(href=mdFile)= mdFile
+                a(href='/markdown/#{mdFile}')= mdFile
       div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent")
        != mdContent
+  script(src="/javascripts/upload.js")
