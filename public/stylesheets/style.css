@@ -19,15 +19,19 @@ ul.mdList > li:before {
   font-size: 20px;
 }
 
+.mdList a {
+  color: #000;
+}
+
 
 .mdContent {
   padding: 20px 10px;
-  border-left: 1px dotted #333;
+  border-left: 2px dashed #ccc;
   position: relative;
 }
 
-.itemHighlight {
-  color: #2a6496;
+.itemHighlight, .itemHighlight a {
+  color: #e58c7c;
 }
 
 #shrinkButton {

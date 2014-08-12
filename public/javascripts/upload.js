@@ -69,3 +69,11 @@ $("#shrinkButton").on('click', function(){
       contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent');
   }
 });
+
+var eleTop = parseInt($("#shrinkButton").css('top'));
+
+$(window).scroll(function() {
+   var scrollTop = $(document).scrollTop();
+   //var pTop = $(".mdContent").offset().top;
+   $("#shrinkButton").css('top', (scrollTop + eleTop) + "px");
+});
