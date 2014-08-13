@@ -5,7 +5,7 @@ block content
     button(type="button", class="close", data-dismiss="alert")
       span(aria-hidden="true") &times;
       span(class="sr-only") Close
-  #uploadZone(class="container-fluid")
+  #uploadZone(class="container-fluid markdown-body")
     .row
       div(class="col-lg-3 col-md-3 col-sm-4 col-xs-5")
         ul.mdList
@@ -16,8 +16,11 @@ block content
             else 
               li
                 a(href='/markdown/#{mdFile}')= mdFile
-      div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent")
+      div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent")
         button#shrinkButton(type="button" class="btn btn-default")
-          span(class="glyphicon glyphicon-chevron-left") 
+          span(class="iconfont") &#xf016e
+        div#settingBg(class="btn-group")
+          button(type="button", class="btn btn-default iconfont") &#xf0205 
+          button(type="button", class="btn btn-default iconfont") &#xf01e4
         != mdContent
   script(src="/javascripts/upload.js")

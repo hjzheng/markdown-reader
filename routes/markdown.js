@@ -16,6 +16,8 @@ marked.setOptions({
 });
 
 var fs = require("fs");
+var pp = require("properties-parser");
+
 
 router.get('/', function(req, res){
   var file = fs.readdirSync(mdPath);  
@@ -30,4 +32,20 @@ router.get('/markdown/:file', function(req, res) {
   res.render('markdown', {"mdFiles": file, "mdContent": html, "fileName": req.param('file')});
 });
 
+/* setting */
+router.get('/settings', function(req, res){
+  var editor = pp.createEditor("settings.properties");
+  var nightMode = editor.get("nightMode");
+  var shrink = editor.get("shrink");
+  var fontSize = editor.get("fontSize");
+  res.setHeader('Content-Type', 'application/json;charset=utf-8');
+  res.send({nightMode: nightMode, shrink: shrink, fontSize: fontSize});
+});
+
+router.post('/settings/save', function(req, res){
+  var editor = pp.createEditor("settings.properties");
+  editor.set(req.body.key, req.body.value);
+  editor.save();
+  res.send("save setting success");
+});
 module.exports = router;

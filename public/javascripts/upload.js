@@ -1,3 +1,32 @@
+/*get settings*/
+$.ajax('/settings', {
+   method: "get",
+   error: function(){
+      console.log("get settings error");  
+   },
+   success: function(data){
+      console.log("get settings done");    
+      data.shrink=="true" ? shrinkButtonAction(true) : shrinkButtonAction(false);
+      data.nightMode=="true" ? $("#uploadZone").addClass('nightMode') : $("#uploadZone").removeClass('nightMode'); 
+   }
+});
+
+/*save setting*/
+
+function saveSettings(data){
+   $.ajax('/settings/save', {
+      method: "post",
+      data: data,
+      error: function(){
+        console.log("save settings error");
+      },
+      success: function(data){
+        console.log(data);
+      }
+   });
+}
+
+/*for upload*/
 function getCurrentTime(){
     return (new Date().toString()).replace(/(.*)GMT(.*)/, function($,$1){return $1});
 }
@@ -55,19 +84,28 @@ $('#uploadZone').on('drop', function(event) {
 	return false;
 });
 
+/*for shrink button*/
+function shrinkButtonAction(bool){
+  var button = $("#shrinkButton");
+  var listDiv = button.parent().prev();
+  var contentDiv = button.parent();
+  var icon = button.children();
+  if(bool){
+      icon.get(0).innerHTML = "&#xf016d";
+      listDiv.css('display', 'none');
+      contentDiv.removeClass().addClass('col-lg-12 col-md-12 col-sm-12 col-xs-12 mdContent');
+  }else{
+      icon.get(0).innerHTML = "&#xf016e";
+      listDiv.css('display', 'block');
+      contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent');
+  }
+}
+
 $("#shrinkButton").on('click', function(){
   var listDiv = $(this).parent().prev();
-  var contentDiv = $(this).parent();
-  var icon = $(this).children();
-  if(listDiv.css('display') != 'none'){
-      icon.removeClass('glyphicon-chevron-left').addClass('glyphicon-chevron-right');
-      listDiv.css('display', 'none');
-      contentDiv.removeClass().addClass('col-lg-12 col-md-12 col-sm-12 col-xs-12 markdown-body mdContent');
-  }else{
-      icon.removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
-      listDiv.css('display', 'block');
-      contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-7 markdown-body mdContent');
-  }
+  var bool = listDiv.css('display') != 'none';
+  shrinkButtonAction(bool);
+  saveSettings({key: "shrink", value: bool});
 });
 
 var eleTop = parseInt($("#shrinkButton").css('top'));
@@ -76,4 +114,24 @@ $(window).scroll(function() {
    var scrollTop = $(document).scrollTop();
    //var pTop = $(".mdContent").offset().top;
    $("#shrinkButton").css('top', (scrollTop + eleTop) + "px");
+});
+
+/*for setting button group*/
+
+var settingTop = parseInt($("#settingBg").css('top'));
+
+$(window).scroll(function() {
+   var scrollTop = $(document).scrollTop();
+   //var pTop = $(".mdContent").offset().top;
+   $("#settingBg").css('top', (scrollTop + settingTop) + "px");
+});
+
+$("#settingBg").children(":first-child").on('click', function(){
+  $("#uploadZone").removeClass('nightMode');
+  saveSettings({key: "nightMode", value: false});
+});
+
+$("#settingBg").children(":last-child").on('click', function(){
+  $("#uploadZone").addClass('nightMode');
+  saveSettings({key: "nightMode", value: true});  
 });

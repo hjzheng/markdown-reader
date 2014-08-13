@@ -1,3 +1,22 @@
+/*define font icon, the font come from iconfont.cn */
+@font-face {font-family: "iconfont";
+  src: url('../fonts/iconfont.eot'); /* IE9*/
+  src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*page style*/
 .title_center {
   padding: 10px 0px;
   text-align: center;
@@ -10,19 +29,15 @@ ul.mdList {
 
 ul.mdList > li {
   list-style: none;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 ul.mdList > li:before {
-  content: "\e022";
-  font-family: 'Glyphicons Halflings';
+  content: "\f0130";
+  font-family: 'iconfont';
   font-size: 20px;
+  padding-right: 5px;
 }
-
-.mdList a {
-  color: #000;
-}
-
 
 .mdContent {
   padding: 20px 10px;
@@ -34,11 +49,13 @@ ul.mdList > li:before {
   color: #e58c7c;
 }
 
+/*shrink button*/
+
 #shrinkButton {
   position: absolute;
   left: 0px;
   top: 200px;
-  opacity: 0.3;
+  opacity: 0.2;
   z-index: 3;
 }
 
@@ -48,4 +65,30 @@ ul.mdList > li:before {
   top: 200px;
   opacity: 0.9;
   z-index: 3;
+}
+
+/*setting button*/
+#settingBg {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  opacity: 0.2;
+  z-index: 3;
+}
+
+#settingBg:hover {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+.nightMode, .nightMode pre, .nightMode pre code, .nightMode table tr {
+  background: #333;
+  color: #eee; 
+}
+
+.nightMode table tr:nth-child(2n) {
+  background: #666;
 }
