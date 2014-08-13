@@ -37,9 +37,9 @@ var closeButton = '<button type="button" class="close" data-dismiss="alert">'
         + '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
 
 function showMessage(msg, classStr){
-   messageZone.get(0).innerHTML = closeButton + getCurrentTime() + msg;
+   messageZone.append("<div role='alert'></div>").children(":first-child").get(0).innerHTML = closeButton + getCurrentTime() + msg;
    messageZone.css("display","block");
-   messageZone.removeClass().addClass(classStr);
+   messageZone.children(":first-child").removeClass().addClass(classStr).css("margin-bottom","0px");
 }
 
 $('#uploadZone').on('drop', function(event) {
