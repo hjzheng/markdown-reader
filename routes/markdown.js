@@ -48,4 +48,15 @@ router.post('/settings/save', function(req, res){
   editor.save();
   res.send("save setting success");
 });
+
+router.get('/download/:file', function(req, res){
+  var fileName = req.param('file');
+  if(typeof(fileName) != undefined || fileName != null) {
+     var mdFile = fs.readFileSync( mdPath + "/" + fileName ,"utf-8");
+     res.send(mdFile);
+  } else {
+     res.send("#Welcome to markdown-reader");
+  }
+});
+
 module.exports = router;

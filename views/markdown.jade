@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  #messageZone
+  #messageZone(class="noprint")
   #uploadZone(class="container-fluid markdown-body")
     .row
-      div(class="col-lg-3 col-md-3 col-sm-4 col-xs-5")
+      div(class="noprint col-lg-3 col-md-3 col-sm-4 col-xs-5")
         ul.mdList
           each mdFile in mdFiles
             if fileName == mdFile
@@ -14,10 +14,14 @@ block content
               li
                 a(href='/markdown/#{mdFile}')= mdFile
       div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent")
-        button#shrinkButton(type="button" class="btn btn-default")
+        button#shrinkButton(type="button" class="btn btn-default noprint")
           span(class="iconfont") &#xf016e
-        div#settingBg(class="btn-group")
+        div#settingBg(class="btn-group noprint")
           button(type="button", class="btn btn-default iconfont") &#xf0205 
           button(type="button", class="btn btn-default iconfont") &#xf01e4
+        div#operation(class="btn-group noprint")
+          button(type="button", class="btn btn-default iconfont") &#xf00a8
+          button(type="button", class="btn btn-default iconfont") 
+            a(href='/download/#{fileName}', download='#{fileName}') &#xf0163
         != mdContent
   script(src="/javascripts/upload.js")

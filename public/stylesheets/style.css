@@ -84,6 +84,23 @@ ul.mdList > li:before {
   z-index: 3;
 }
 
+/*operation button*/
+#operation {
+  position: absolute;
+  right: 92px;
+  top: 10px;
+  opacity: 0.2;
+  z-index: 3;
+}
+
+#operation:hover {
+  position: absolute;
+  right: 92px;
+  top: 10px;
+  opacity: 0.9;
+  z-index: 3;
+}
+
 .nightMode, .nightMode pre, .nightMode pre code, .nightMode table tr {
   background: #333;
   color: #eee; 
@@ -92,3 +109,18 @@ ul.mdList > li:before {
 .nightMode table tr:nth-child(2n) {
   background: #666;
 }
+
+.shrink {
+  display: none;
+}
+
+@media print { 
+  .noprint {
+     display: none !important;
+  }
+
+  .mdContent {
+     width: 100% !important;
+     border-left: 0px dashed #ccc !important;
+  } 
+} 

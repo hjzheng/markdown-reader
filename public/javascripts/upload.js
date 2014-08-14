@@ -92,11 +92,11 @@ function shrinkButtonAction(bool){
   var icon = button.children();
   if(bool){
       icon.get(0).innerHTML = "&#xf016d";
-      listDiv.css('display', 'none');
+      listDiv.addClass('shrink');
       contentDiv.removeClass().addClass('col-lg-12 col-md-12 col-sm-12 col-xs-12 mdContent');
   }else{
       icon.get(0).innerHTML = "&#xf016e";
-      listDiv.css('display', 'block');
+      listDiv.removeClass('shrink');
       contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent');
   }
 }
@@ -119,11 +119,13 @@ $(window).scroll(function() {
 /*for setting button group*/
 
 var settingTop = parseInt($("#settingBg").css('top'));
+var operationTop = parseInt($("#operation").css('top'));
 
 $(window).scroll(function() {
    var scrollTop = $(document).scrollTop();
    //var pTop = $(".mdContent").offset().top;
    $("#settingBg").css('top', (scrollTop + settingTop) + "px");
+   $("#operation").css('top', (scrollTop + operationTop) + "px");
 });
 
 $("#settingBg").children(":first-child").on('click', function(){
@@ -135,3 +137,15 @@ $("#settingBg").children(":last-child").on('click', function(){
   $("#uploadZone").addClass('nightMode');
   saveSettings({key: "nightMode", value: true});  
 });
+
+$("#operation").children(":first-child").on('click', function(){
+  window.print();
+});
+
+$("#operation").children(":last-child").on('click', function(){
+  return true;
+});
+
+
+/*for operation button*/
+
