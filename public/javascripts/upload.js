@@ -116,7 +116,7 @@ $(window).scroll(function() {
    $("#shrinkButton").css('top', (scrollTop + eleTop) + "px");
 });
 
-/*for setting button group*/
+/*for setting and operation button group*/
 
 var settingTop = parseInt($("#settingBg").css('top'));
 var operationTop = parseInt($("#operation").css('top'));
@@ -138,14 +138,47 @@ $("#settingBg").children(":last-child").on('click', function(){
   saveSettings({key: "nightMode", value: true});  
 });
 
-$("#operation").children(":first-child").on('click', function(){
-  window.print();
-});
-
-$("#operation").children(":last-child").on('click', function(){
+$("#operation").children(":nth-child(1)").on('click', function(){
   return true;
 });
 
+$("#operation").children(":nth-child(2)").on('click', function(){
+  //console.log(editor.getValue());
+  var fileName = $(this).children(":first-child").attr("fileName");
+  var updateValue = editor.getValue();
+  $.ajax('/save', {
+      method: "post",
+      data: {fileName: fileName, content: updateValue},
+      error: function(){
+        console.log("save file error");
+        var msg = '<strong style="padding-left:10px;">Sorry, save file failed.</strong>';
+        var classStr = 'alert alert-warning alert-dismissible';
+        showMessage(msg, classStr);
+      },
+      success: function(data){
+        console.log(data);
+        var msg = '<strong style="padding-left:10px;"> Save file success,' + ' open '
+              + '<a href="/' + data + '">' + data + '</a></strong>';
+        var classStr = 'alert alert-success alert-dismissible';
+        showMessage(msg, classStr);
+      }
+   });
+});
 
-/*for operation button*/
+$("#operation").children(":nth-child(3)").on('click', function(){
+  window.print();
+});
+
+$("#operation").children(":nth-child(4)").on('click', function(){
+  return true;
+});
+
+if(document.getElementById("editor") != null){
+  var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+     lineWrapping: true,
+     viewportMargin: Infinity
+  });
+}
+
+
 

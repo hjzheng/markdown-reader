@@ -21,15 +21,21 @@ var pp = require("properties-parser");
 
 router.get('/', function(req, res){
   var file = fs.readdirSync(mdPath);  
-  res.render('markdown', {"mdFiles": file, "mdContent": "<h1 class='title_center'>Welcome to markdown-reader</h1>", fileName: ""});
+  res.render('markdown', {"mdFiles": file, "mdContent": "<h1 class='title_center'>Welcome to markdown-reader</h1>", fileName: "", editor: false});
 });
 
 /* md page. */
 router.get('/markdown/:file', function(req, res) {
   var file = fs.readdirSync(mdPath);
-  var mdFile = fs.readFileSync( mdPath + "/" + req.param('file') ,"utf-8");
+  var mdFile = fs.readFileSync(mdPath + "/" + req.param('file') ,"utf-8");
   var html = marked(mdFile);
-  res.render('markdown', {"mdFiles": file, "mdContent": html, "fileName": req.param('file')});
+  res.render('markdown', {"mdFiles": file, "mdContent": html, "fileName": req.param('file'), editor: false});
+});
+
+router.get('/edit/:file', function(req, res) {
+  var file = fs.readdirSync(mdPath);
+  var mdFile = fs.readFileSync(mdPath + "/" + req.param('file') ,"utf-8");
+  res.render('markdown', {"mdFiles": file, "mdContent": mdFile, "fileName": req.param('file'), editor: true});
 });
 
 /* setting */
@@ -57,6 +63,18 @@ router.get('/download/:file', function(req, res){
   } else {
      res.send("#Welcome to markdown-reader");
   }
+});
+
+router.post('/save', function(req, res){
+  var fileName = req.body.fileName;
+  var content = req.body.content;
+  fs.writeFile(mdPath + "/" + fileName, content, function (err) {
+     if(err){
+       res.send("save error"); 
+     }else{
+       res.send(mdPath + "/" + fileName);
+     }
+  });
 });
 
 module.exports = router;

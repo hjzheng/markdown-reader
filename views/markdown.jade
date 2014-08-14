@@ -20,8 +20,16 @@ block content
           button(type="button", class="btn btn-default iconfont") &#xf0205 
           button(type="button", class="btn btn-default iconfont") &#xf01e4
         div#operation(class="btn-group noprint")
-          button(type="button", class="btn btn-default iconfont") &#xf00a8
+          button(type="button", class="btn btn-default iconfont")
+            a(href='/edit/#{fileName}') &#xf00be
+          button(type="button", class="btn btn-default iconfont") 
+            a(fileName='#{fileName}', href='#') &#xf0131
+          button(type="button", class="btn btn-default iconfont") 
+            a(fileName='#{fileName}', href="#") &#xf00a8
           button(type="button", class="btn btn-default iconfont") 
             a(href='/download/#{fileName}', download='#{fileName}') &#xf0163
-        != mdContent
+        if editor == false
+          include ./includes/content.jade
+        else
+          include ./includes/editor.jade 
   script(src="/javascripts/upload.js")
