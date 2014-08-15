@@ -25,6 +25,12 @@ node和npm已经安装
 
 markdown文件夹中存放md文件
 
+测试环境:
+
+- OS: Red Hat Enterprise Linux Server release 6.1 (64)
+- node: v0.10.30
+- npm: 1.4.21
+
 测试浏览器:
 
 - IE10
