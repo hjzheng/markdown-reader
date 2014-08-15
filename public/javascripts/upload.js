@@ -120,12 +120,14 @@ $(window).scroll(function() {
 
 var settingTop = parseInt($("#settingBg").css('top'));
 var operationTop = parseInt($("#operation").css('top'));
+var githubTop = parseInt($("#github").css('top'));
 
 $(window).scroll(function() {
    var scrollTop = $(document).scrollTop();
    //var pTop = $(".mdContent").offset().top;
    $("#settingBg").css('top', (scrollTop + settingTop) + "px");
    $("#operation").css('top', (scrollTop + operationTop) + "px");
+   $("#github").css('top', (scrollTop + githubTop) + "px");
 });
 
 $("#settingBg").children(":first-child").on('click', function(){
@@ -139,17 +141,17 @@ $("#settingBg").children(":last-child").on('click', function(){
 });
 
 $("#operation").children(":nth-child(1)").on('click', function(){
-  var href = $(this).children(":first-child").attr("href");
+  var href = $(this).attr("href");
   if(href == "/edit/") {
     return false;
   }else{
-    window.location.href = href;
+    return true;
   }
 });
 
 $("#operation").children(":nth-child(2)").on('click', function(){
   //console.log(editor.getValue());
-  var fileName = $(this).children(":first-child").attr("fileName");
+  var fileName = $(this).attr("fileName");
   if(typeof(editor) == 'undefined') return false;
   var updateValue = editor.getValue();
   $.ajax('/save', {
@@ -176,7 +178,7 @@ $("#operation").children(":nth-child(3)").on('click', function(){
 });
 
 $("#operation").children(":nth-child(4)").on('click', function(){
-  var href = $(this).children(":first-child").attr("href");
+  var href = $(this).attr("href");
   if(href == "/download/"){ 
     return false;
   }else{
