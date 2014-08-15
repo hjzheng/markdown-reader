@@ -57,6 +57,8 @@ router.post('/settings/save', function(req, res){
 
 router.get('/download/:file', function(req, res){
   var fileName = req.param('file');
+  res.setHeader('Content-Type', 'text/plain;charset=utf-8');
+  res.setHeader('content-disposition', 'attachment; filename=' + fileName);
   if(typeof(fileName) != undefined || fileName != null) {
      var mdFile = fs.readFileSync( mdPath + "/" + fileName ,"utf-8");
      res.send(mdFile);

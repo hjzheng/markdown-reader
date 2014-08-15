@@ -23,3 +23,6 @@ node和npm已经安装
 其他说明:
 
 markdown文件夹中存放md文件
+
+测试浏览器
+IE10, Firefox31, Chrome36
