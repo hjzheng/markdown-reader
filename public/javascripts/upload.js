@@ -139,12 +139,18 @@ $("#settingBg").children(":last-child").on('click', function(){
 });
 
 $("#operation").children(":nth-child(1)").on('click', function(){
-  return true;
+  var href = $(this).children(":first-child").attr("href");
+  if(href == "/edit/") {
+    return false;
+  }else{
+    window.location.href = href;
+  }
 });
 
 $("#operation").children(":nth-child(2)").on('click', function(){
   //console.log(editor.getValue());
   var fileName = $(this).children(":first-child").attr("fileName");
+  if(typeof(editor) == 'undefined') return false;
   var updateValue = editor.getValue();
   $.ajax('/save', {
       method: "post",
@@ -170,7 +176,12 @@ $("#operation").children(":nth-child(3)").on('click', function(){
 });
 
 $("#operation").children(":nth-child(4)").on('click', function(){
-  return true;
+  var href = $(this).children(":first-child").attr("href");
+  if(href == "/download/"){ 
+    return false;
+  }else{
+    return true;
+  }
 });
 
 if(document.getElementById("editor") != null){
