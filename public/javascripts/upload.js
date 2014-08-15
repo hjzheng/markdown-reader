@@ -1,5 +1,5 @@
 /*get settings*/
-$.ajax('/settings', {
+$.ajax('/settings?date=' + new Date(), {
    method: "get",
    error: function(){
       console.log("get settings error");  
