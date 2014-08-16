@@ -21,9 +21,27 @@ node和npm已经安装
 - npm start
 - 访问 http://127.0.0.1:9000
 
-其他说明:
+目录结构:
 
-markdown文件夹中存放md文件
+markdown-reader
+├── app.js
+├── bin
+│   └── www
+├── markdown ---->(markdown文件存放位置)
+├── node_modules
+├── package.json 
+├── public ----> (静态资源路径)
+│   ├── bootstrap
+│   ├── codemirror ---->(页面在线编辑markdown所依赖的库)
+│   ├── fonts ---->(来自http://iconfont.cn)
+│   ├── javascripts 
+│   ├── jquery
+│   └── stylesheets
+├── README.md
+├── routes
+├── settings.properties ---->(页面的中要用到的配置)
+├── upload_tmp --->(上传文件的临时存放目录)
+└── views
 
 测试环境:
 
@@ -36,3 +54,8 @@ markdown文件夹中存放md文件
 - IE10
 - Firefox31
 - Chrome36
+
+技术总结:
+
+- 后端 nodejs + express 
+- 前端 bootstrap + codemirror + jquery + html5
