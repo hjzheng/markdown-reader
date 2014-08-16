@@ -5,13 +5,13 @@ This is a simply reader for markdown file
 
 markdown-reader 0.0.1正式release啦！
 
-- 支持拖拽上传markdown文件
-- 支持markdown文件在线编辑,保存和下载
-- 支持夜间阅读模式
+- 支持拖拽上传markdown文件。
+- 支持markdown文件在线编辑,保存和下载。
+- 支持夜间阅读模式。
 
 安装前提:
 
-node和npm已经安装
+node和npm已经安装。
 
 安装步骤:
 
@@ -57,5 +57,5 @@ markdown-reader
 
 技术总结:
 
-- 后端 nodejs + express 
-- 前端 bootstrap + codemirror + jquery + html5
+- back-end: nodejs + express 
+- front-end: bootstrap + codemirror + jquery + html5
