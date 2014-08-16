@@ -23,6 +23,7 @@ node和npm已经安装。
 
 目录结构:
 
+```bash
 markdown-reader
 ├── app.js
 ├── bin
@@ -42,6 +43,7 @@ markdown-reader
 ├── settings.properties ---->(页面的中要用到的配置)
 ├── upload_tmp --->(上传文件的临时存放目录)
 └── views
+```
 
 测试环境:
 
