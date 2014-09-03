@@ -11,7 +11,7 @@ markdown-reader 0.0.1正式release啦！
 
 安装前提:
 
-node和npm已经安装。
+node和npm已经安装,安装方法详见[nodejs和express][0]
 
 安装步骤:
 
@@ -61,3 +61,5 @@ markdown-reader
 
 - back-end: nodejs + express 
 - front-end: bootstrap + codemirror + jquery + html5
+
+[0]:https://github.com/hjzheng/CUF_meeting_knowledge_share/issues/2
