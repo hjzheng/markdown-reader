@@ -97,7 +97,7 @@ function shrinkButtonAction(bool){
   }else{
       icon.get(0).innerHTML = "&#xf016e";
       listDiv.removeClass('shrink');
-      contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent');
+      contentDiv.removeClass().addClass('col-lg-9 col-md-9 col-sm-8 col-xs-12 mdContent');
   }
 }
 

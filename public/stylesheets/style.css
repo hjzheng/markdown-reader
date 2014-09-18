@@ -210,7 +210,7 @@ ul.mdList > li:before {
 
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
     /*setting button*/
     #settingBg {
         right: 82px;
