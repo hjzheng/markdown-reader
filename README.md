@@ -8,6 +8,7 @@ markdown-reader 0.0.1正式release啦！
 - 支持拖拽上传markdown文件。
 - 支持markdown文件在线编辑,保存和下载。
 - 支持夜间阅读模式。
+- 响应式设计,支持小尺寸设备
 
 安装前提:
 
