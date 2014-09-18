@@ -1,33 +1,37 @@
 extends layout
-
-block content
-  #messageZone(class="noprint")
-  #uploadZone(class="container-fluid markdown-body")
-    .row
-      div(class="noprint col-lg-3 col-md-3 col-sm-4 col-xs-5")
-        ul.mdList
-          each mdFile in mdFiles
-            if fileName == mdFile
-              li.itemHighlight
-                a(href='/markdown/#{mdFile}')= mdFile
-            else 
-              li
-                a(href='/markdown/#{mdFile}')= mdFile
-      div(class="col-lg-9 col-md-9 col-sm-8 col-xs-7 mdContent")
-        button#shrinkButton(type="button" class="btn btn-default noprint")
-          span(class="iconfont") &#xf016e
-        div#settingBg(class="btn-group noprint")
-          button(type="button", class="btn btn-default iconfont") &#xf0205 
-          button(type="button", class="btn btn-default iconfont") &#xf01e4
-        div#github(class="btn-group noprint")
-          a(role="button", class="btn btn-default iconfont", href='https://github.com/hjzheng/markdown-reader') &#xf01ca
-        div#operation(class="btn-group noprint")
-          a(role="button", class="btn btn-default iconfont", href='/edit/#{fileName}') &#xf00be
-          a(role="button", class="btn btn-default iconfont", fileName='#{fileName}', href='#') &#xf0131
-          a(role="button", class="btn btn-default iconfont", fileName='#{fileName}', href="#") &#xf00a8
-          a(role="button", class="btn btn-default iconfont", href='/download/#{fileName}', download='#{fileName}') &#xf0163
-        if editor == false
-          include ./includes/content.jade
-        else
-          include ./includes/editor.jade 
-  script(src="/javascripts/upload.js")
+    block content
+    #messageZone(class="noprint")
+    #uploadZone(class="container-fluid markdown-body")
+        .row
+            div(class="noprint col-lg-3 col-md-3 col-sm-4 col-xs-12")
+                div#mdList
+                    div(class="btn-group noprint")
+                        a#menuButton(role="button", class="btn btn-default iconfont", href="#mdList") &#xf0154
+                    div(class="btn-group noprint")
+                        a#closeButton(role="button", class="btn btn-default iconfont", href="#") &#xf0153
+                    ul.mdList
+                        each mdFile in mdFiles
+                            if fileName == mdFile
+                                li.itemHighlight
+                                    a(href='/markdown/#{mdFile}')= mdFile
+                            else
+                                li
+                                    a(href='/markdown/#{mdFile}')= mdFile
+            div(class="col-lg-9 col-md-9 col-sm-8 col-xs-12 mdContent")
+                button#shrinkButton(type="button" class="btn btn-default noprint")
+                    span(class="iconfont") &#xf016e
+                div#settingBg(class="btn-group noprint")
+                    button(type="button", class="btn btn-default iconfont") &#xf0205
+                    button(type="button", class="btn btn-default iconfont") &#xf01e4
+                div#github(class="btn-group noprint")
+                    a(role="button", class="btn btn-default iconfont", href='https://github.com/hjzheng/markdown-reader') &#xf01ca
+                div#operation(class="btn-group noprint")
+                    a(role="button", class="btn btn-default iconfont", href='/edit/#{fileName}') &#xf00be
+                    a(role="button", class="btn btn-default iconfont", fileName='#{fileName}', href='#') &#xf0131
+                    a(role="button", class="btn btn-default iconfont", fileName='#{fileName}', href="#") &#xf00a8
+                    a(role="button", class="btn btn-default iconfont", href='/download/#{fileName}', download='#{fileName}') &#xf0163
+                if editor == false
+                    include ./includes/content.jade
+                else
+                    include ./includes/editor.jade
+    script(src="/javascripts/upload.js")
