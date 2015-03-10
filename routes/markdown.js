@@ -38,6 +38,11 @@ router.get('/edit/:file', function(req, res) {
   res.render('markdown', {"mdFiles": file, "mdContent": mdFile, "fileName": req.param('file'), editor: true});
 });
 
+router.get('/delete/:file', function(req, res){
+    fs.unlinkSync(mdPath + "/" + req.param('file'));
+    res.redirect('/');
+});
+
 /* setting */
 router.get('/settings', function(req, res){
   var editor = pp.createEditor("settings.properties");

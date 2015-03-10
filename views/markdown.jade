@@ -15,9 +15,13 @@ block content
                             if fileName == mdFile
                                 li.itemHighlight
                                     a(href='/markdown/#{mdFile}')= mdFile
+                                    a(href='/delete/#{mdFile}')
+                                        span(class="glyphicon glyphicon-trash")
                             else
                                 li
                                     a(href='/markdown/#{mdFile}')= mdFile
+                                    a(href='/delete/#{mdFile}')
+                                        span(class="glyphicon glyphicon-trash")
             div(class="col-lg-9 col-md-9 col-sm-8 col-xs-12 mdContent")
                 button#shrinkButton(type="button" class="btn btn-default noprint")
                     span(class="iconfont") &#xf016e
