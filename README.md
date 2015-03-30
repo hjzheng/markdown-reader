@@ -1,7 +1,9 @@
 markdown-reader
 ===============
 
-This is a simply reader for markdown file
+This is a simply reader for markdown file.
+
+演示地址: http://markdown-reader.coding.io (不易大量访问, 感谢https://coding.net)
 
 markdown-reader 0.0.1正式release啦！
 
