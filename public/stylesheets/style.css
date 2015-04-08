@@ -231,3 +231,16 @@ ul.mdList > li:before {
         top: 10px;
     }
 }
+
+.dropzone {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+    font: 20pt bold;
+    color: #bbb;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

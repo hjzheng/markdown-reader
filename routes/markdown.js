@@ -21,7 +21,7 @@ var pp = require("properties-parser");
 
 router.get('/', function(req, res){
   var file = fs.readdirSync(mdPath);  
-  res.render('markdown', {"mdFiles": file, "mdContent": "<h1 class='title_center'>Welcome to markdown-reader</h1>", fileName: "", editor: false});
+  res.render('markdown', {"mdFiles": file, "mdContent": "<h1 class='title_center'>Welcome to markdown-reader<div class='dropzone'>You can drop markdown file anywhere to upload<div></h1>", fileName: "", editor: false});
 });
 
 /* md page. */
